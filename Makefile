@@ -23,6 +23,9 @@ install: build
 uninstall:
 	rm -f ~/.terraform.d/plugins/${HOSTNAME}/${NAMESPACE}/${NAME}/${VERSION}/${OS_ARCH}/*
 
+docs: .phony
+	go generate
+
 release:
 	GOOS=darwin  GOARCH=amd64 go build -o ./bin/${BINARY}_${VERSION}_darwin_amd64
 	GOOS=darwin  GOARCH=arm64 go build -o ./bin/${BINARY}_${VERSION}_darwin_arm64
